@@ -1,0 +1,25 @@
+﻿@model drugi.Models.TodoModels.AddTodoViewModel
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Add</title>
+</head>
+<body>
+<div>
+    <form asp-action="Add" method="post">
+        Text: <input asp-for="Text"/> <span asp-validation-for="Text"></span> <br/>
+        Due date: <input asp-for="DateDue"/> <br/>
+        Labels: <input asp-for="LabelsString"/>
+        <input type="submit"/>
+    </form>
+    
+    <br/> <br/> <br/>
+    <a asp-action="Index">Go back</a>
+</div>
+</body>
+</html>

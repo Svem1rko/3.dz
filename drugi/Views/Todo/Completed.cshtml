@@ -1,0 +1,29 @@
+﻿@using drugi.Models.TodoModels
+@model drugi.Models.TodoModels.CompletedViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Completed</title>
+</head>
+<body>
+<div>
+    <h1>Completed Todos</h1>
+    
+    @foreach (TodoViewModel tvm in Model.GetList())
+    {
+        <strong>@tvm.Text</strong> <br/>
+        @tvm.GetCompleted() <br/>
+        <a asp-action="Remove" asp-route-id="@tvm.Id">Remove from completed</a> <br/>
+        <br/>
+    }
+    
+    <br/> <br/> <br/>
+    <a asp-action="Index">Go back</a>
+</div>
+</body>
+</html>

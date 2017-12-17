@@ -1,0 +1,28 @@
+﻿@using System.IO.Compression
+@using drugi.Entities;
+@model drugi.Models.TodoModels.IndexViewModel
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Todo</title>
+</head>
+<body class="text-center">
+<div>
+    <h1>Todo</h1>
+    <p><a asp-controller="Todo" asp-action="Add">Add new todo</a> &emsp; &emsp; <a asp-controller="Todo" asp-action="Completed">See Completed todos</a></p>
+    <br/>
+
+    @foreach (var tvm in Model.GetList())
+    {
+        <strong>@tvm.Text</strong>        <span style="color: red">@tvm.DueTime()</span> <br/>
+        @tvm.GetDue() <br/>
+        @tvm.PrintLabels() <br/>
+        <a asp-action="Mark" asp-route-id="@tvm.Id">Mark as completed</a> <br/>
+        <br/>
+    }
+</div>
+</body>
