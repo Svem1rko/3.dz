@@ -31,6 +31,7 @@ namespace drugi.Models.TodoModels
             this.DateDue = todoItem.DateDue;
             this.Text = todoItem.Text;
             this.UserId = todoItem.UserId;
+            Labels = todoItem.Labels;
         }
 
         public TodoViewModel(AddTodoViewModel atvm)
@@ -100,7 +101,7 @@ namespace drugi.Models.TodoModels
         {
             string result = "";
 
-            if (Labels == null)
+            if (Labels == null || Labels.Count == 0)
                 result = "No labels";
             else
             {
