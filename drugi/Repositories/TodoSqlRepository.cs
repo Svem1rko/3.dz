@@ -124,6 +124,7 @@ namespace drugi.Repositories
         public List<TodoViewModel> GetActive(string userId)
         {
             var todoList = _context.TodoItems.
+                Include(l => l.Labels).
                 Where(i => i.UserId == userId).
                 Where(t => t.DateCompleted == null).
                 OrderBy(x => x.DateDue).
@@ -137,6 +138,7 @@ namespace drugi.Repositories
         public List<TodoViewModel> GetCompleted(string userId)
         {
             var todoList = _context.TodoItems.
+                Include(l => l.Labels).
                 Where(i => i.UserId == userId).
                 Where(t => t.DateCompleted != null).
                 ToList();
