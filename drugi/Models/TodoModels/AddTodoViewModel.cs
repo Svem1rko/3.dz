@@ -42,13 +42,17 @@ namespace drugi.Models.TodoModels
 
         public void DetermineLabels()
         {
-            Labels = new List<TodoItemLabel>();
-
-            var s = LabelsString.Split(',');
-
-            foreach (string label in s)
+            if (LabelsString != null)
             {
-                Labels.Add(new TodoItemLabel(label.ToLower()));
+            
+                Labels = new List<TodoItemLabel>();
+
+                var s = LabelsString.Split(',');
+
+                foreach (string label in s)
+                {
+                    Labels.Add(new TodoItemLabel(label.ToLower()));
+                }
             }
         }
     }
