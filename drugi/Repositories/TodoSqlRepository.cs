@@ -35,22 +35,25 @@ namespace drugi.Repositories
             {
                 var tdi = new TodoItem(tvm);
 
-                foreach (TodoItemLabel label in tvm.Labels)
+                if (tvm.Labels != null)
                 {
-                    bool exists = false;
-                    foreach (TodoItemLabel contextLabel in _context.Labels)
-                    {
-                        exists = contextLabel.Value == label.Value;
-                        if (exists) break;
-                    }
 
-                    if (!exists)
-                    {
-                        _context.Labels.Add(label);
-                    }
+                   foreach (TodoItemLabel label in tvm.Labels)
+                   {
+                        bool exists = false;
+                        foreach (TodoItemLabel contextLabel in _context.Labels)
+                        {
+                           exists = contextLabel.Value == label.Value;
+                           if (exists) break;
+                        }
 
+                        if (!exists)
+                        {
+                            _context.Labels.Add(label);
+                        }
+
+                    }
                 }
-
                 _context.TodoItems.Add(tdi);
                 _context.SaveChanges();
             }
